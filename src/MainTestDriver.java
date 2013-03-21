@@ -7,8 +7,8 @@ import Jama.Matrix;
 public class MainTestDriver {
 	public static void main(String[] args){
 		try{				       		      	
-			Matrix s1 = FileManager.convertPGMtoMatrix("faces\\s3\\1.pgm");
-			Matrix s2 = FileManager.convertPGMtoMatrix("faces\\s3\\2.pgm");
+			Matrix s1 = FileManager.convertPGMtoMatrix("faces\\s1\\1.pgm");
+			Matrix s2 = FileManager.convertPGMtoMatrix("faces\\s1\\2.pgm");
 			Matrix s3 = FileManager.convertPGMtoMatrix("faces\\s2\\1.pgm");
 			Matrix s4 = FileManager.convertPGMtoMatrix("faces\\s2\\2.pgm");
 			
