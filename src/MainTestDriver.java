@@ -7,12 +7,12 @@ import Jama.Matrix;
 public class MainTestDriver {
 	public static void main(String[] args){
 		try{				       		      	
-			Matrix s1 = FileManager.convertPGMtoMatrix("faces\\s1\\1.pgm");
-			Matrix s2 = FileManager.convertPGMtoMatrix("faces\\s1\\2.pgm");
+			Matrix s1 = FileManager.convertPGMtoMatrix("faces\\s3\\1.pgm");
+			Matrix s2 = FileManager.convertPGMtoMatrix("faces\\s3\\2.pgm");
 			Matrix s3 = FileManager.convertPGMtoMatrix("faces\\s2\\1.pgm");
 			Matrix s4 = FileManager.convertPGMtoMatrix("faces\\s2\\2.pgm");
 			
-			Matrix testS3 = FileManager.convertPGMtoMatrix("faces\\s2\\10.pgm");
+			Matrix testS3 = FileManager.convertPGMtoMatrix("faces\\s3\\10.pgm");
 			
 			ArrayList<Matrix> trainSet = new ArrayList();
 			trainSet.add(vectorize(s1));
@@ -26,7 +26,7 @@ public class MainTestDriver {
 			label.add("s2");
 			label.add("s2");
 			
-			LDA pca = new LDA(trainSet, label, 2);
+			LLP pca = new LLP(trainSet, label, 2);
 			
 			Matrix testCase = pca.getW().transpose().times(vectorize(testS3).minus(pca.meanMatrix));
 			Metric metric = new EuclideanDistance();

@@ -126,4 +126,9 @@ public class PCA extends FeatureExtraction {
 		return this.projectedTrainingSet;
 	}
 
+	@Override
+	Matrix getMeanMatrix() {
+		return this.meanMatrix;
+	}
+
 }

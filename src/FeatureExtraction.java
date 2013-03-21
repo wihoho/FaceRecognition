@@ -14,4 +14,5 @@ public abstract class FeatureExtraction {
 	
 	abstract Matrix getW();
 	abstract ArrayList<projectedTrainingMatrix> getProjectedTrainingSet();
+	abstract Matrix getMeanMatrix();
 }

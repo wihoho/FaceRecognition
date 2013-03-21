@@ -149,4 +149,9 @@ public class LDA extends FeatureExtraction {
 	ArrayList<projectedTrainingMatrix> getProjectedTrainingSet() {
 		return this.projectedTrainingSet;
 	}
+
+	@Override
+	Matrix getMeanMatrix() {
+		return this.getMeanMatrix();
+	}
 }
