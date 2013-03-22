@@ -1,0 +1,4 @@
+int xu_dong_random_samples, int folds, int metric_type, double energy, int type, int validation, int knn_k
+
+3 5 2 0.2 2 4 2
+4 10 1 0.5 1 3 2

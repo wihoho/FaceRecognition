@@ -12,9 +12,9 @@ public abstract class FeatureExtraction {
 	Matrix W;
 	ArrayList<projectedTrainingMatrix> projectedTrainingSet;
 
-	abstract Matrix getW();
+	public abstract Matrix getW();
 
-	abstract ArrayList<projectedTrainingMatrix> getProjectedTrainingSet();
+	public abstract ArrayList<projectedTrainingMatrix> getProjectedTrainingSet();
 
-	abstract Matrix getMeanMatrix();
+	public abstract Matrix getMeanMatrix();
 }
