@@ -5,26 +5,26 @@ import java.util.ArrayList;
 import Jama.Matrix;
 
 public class MainTestDriver {
-	public void  {
+	public static void main(String[] agrs)  {
 		try {
-//			Matrix s1 = FileManager.convertPGMtoMatrix("faces/s1/1.pgm");
-//			Matrix s2 = FileManager.convertPGMtoMatrix("faces/s1/2.pgm");
-//			Matrix s3 = FileManager.convertPGMtoMatrix("faces/s2/1.pgm");
-//			Matrix s4 = FileManager.convertPGMtoMatrix("faces/s2/2.pgm");
-//
-//			Matrix testS3 = FileManager.convertPGMtoMatrix("faces/s2/10.pgm");
-//
-//			ArrayList<Matrix> trainSet = new ArrayList();
-//			trainSet.add(vectorize(s1));
-//			trainSet.add(vectorize(s2));
-//			trainSet.add(vectorize(s3));
-//			trainSet.add(vectorize(s4));
-//
-//			ArrayList<String> label = new ArrayList<String>();
-//			label.add("s3");
-//			label.add("s3");
-//			label.add("s2");
-//			label.add("s2");
+			Matrix s1 = FileManager.convertPGMtoMatrix("faces/s1/1.pgm");
+			Matrix s2 = FileManager.convertPGMtoMatrix("faces/s1/2.pgm");
+			Matrix s3 = FileManager.convertPGMtoMatrix("faces/s2/1.pgm");
+			Matrix s4 = FileManager.convertPGMtoMatrix("faces/s2/2.pgm");
+
+			Matrix testS3 = FileManager.convertPGMtoMatrix("faces/s2/10.pgm");
+
+			ArrayList<Matrix> trainSet = new ArrayList();
+			trainSet.add(vectorize(s1));
+			trainSet.add(vectorize(s2));
+			trainSet.add(vectorize(s3));
+			trainSet.add(vectorize(s4));
+
+			ArrayList<String> label = new ArrayList<String>();
+			label.add("s3");
+			label.add("s3");
+			label.add("s2");
+			label.add("s2");
 
 			LDA pca = new LDA(trainSet, label, 2);
 
