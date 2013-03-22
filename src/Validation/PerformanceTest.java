@@ -11,8 +11,5 @@ public class PerformanceTest {
 		}
 	}
 	
-	static ArrayList<String> generateTrainTestSet(int trainNum, int testNum){
-		ArrayList<Integer> alreadyInside = new ArrayList<Integer>();
-		return null;
-	}
+	
 }
