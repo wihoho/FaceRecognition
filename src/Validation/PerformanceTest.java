@@ -13,7 +13,7 @@ import Training.*;
 public class PerformanceTest {
 	public static void main(String args[]){
 		System.out.print("PCA: ");
-		test(2,0.5,0,3,3);
+		test(0,0.5,0,3,3);
 		
 //		System.out.print("LDA: ");
 //		test(2,0.5,1,3,3);

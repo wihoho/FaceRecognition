@@ -29,7 +29,10 @@ public class CosineDissimilarity implements Metric {
 			eNorm += Math.pow(b.get(i, 0), 2);
 		}
 		eNorm = Math.sqrt(eNorm);
-
+		
+		if(se < 0)
+			se = 0 - se;
+		
 		cosine = se / (eNorm * sNorm);
 
 		// transform cosine similarity into dissimilarity such that this is
