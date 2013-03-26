@@ -7,15 +7,13 @@ import Jama.Matrix;
 
 public class PCA extends FeatureExtraction {
 
-	public PCA(ArrayList<Matrix> trainingSet, ArrayList<String> labels,
-			int numOfComponents) {
-		assert numOfComponents <= trainingSet.size() : "the expected dimensions could not be achieved!";
+	public PCA(ArrayList<Matrix> trainingSet, ArrayList<String> labels,double energyPercentage) {
+		
 		this.trainingSet = trainingSet;
 		this.labels = labels;
-		this.numOfComponents = numOfComponents;
 
 		this.meanMatrix = getMean(this.trainingSet);
-		this.W = getFeature(this.trainingSet, this.numOfComponents);
+		this.W = getFeature(this.trainingSet, energyPercentage);
 
 		// Construct projectedTrainingMatrix
 		this.projectedTrainingSet = new ArrayList<projectedTrainingMatrix>();
@@ -25,10 +23,12 @@ public class PCA extends FeatureExtraction {
 					labels.get(i));
 			this.projectedTrainingSet.add(ptm);
 		}
+		
+		System.out.println("Num of components: "+this.numOfComponents);
 	}
 
 	// extract features, namely W
-	private Matrix getFeature(ArrayList<Matrix> input, int K) {
+	private Matrix getFeature(ArrayList<Matrix> input, double energyPercentage) {
 		int i, j;
 
 		int row = input.get(0).getRowDimension();
@@ -45,8 +45,7 @@ public class PCA extends FeatureExtraction {
 		EigenvalueDecomposition feature = XTX.eig();
 		double[] d = feature.getd();
 
-		assert d.length >= K : "number of eigenvalues is less than K";
-		int[] indexes = this.getIndexesOfKEigenvalues(d, K);
+		int[] indexes = this.getIndexesOfKEigenvalues(d, energyPercentage);
 
 		Matrix eigenVectors = X.times(feature.getV());
 		Matrix selectedEigenVectors = eigenVectors.getMatrix(0,
@@ -93,7 +92,7 @@ public class PCA extends FeatureExtraction {
 		}
 	}
 
-	private int[] getIndexesOfKEigenvalues(double[] d, int k) {
+	private int[] getIndexesOfKEigenvalues(double[] d, double energyPercentage) {
 		mix[] mixes = new mix[d.length];
 		int i;
 		for (i = 0; i < d.length; i++)
@@ -101,9 +100,26 @@ public class PCA extends FeatureExtraction {
 
 		Arrays.sort(mixes);
 
+		double[] sortedEigenvalues = new double[d.length];
+		double sumAllEigenvalues = 0;
+		double sumEigenvalues = 0;
+		for(i = 0; i < d.length; i ++){
+			sortedEigenvalues[i] = mixes[i].value;
+			sumAllEigenvalues += sortedEigenvalues[i];
+		}
+		
+		for(i = 0; i < d.length; i ++){
+			sumEigenvalues += sortedEigenvalues[i];
+			if(sumEigenvalues / sumAllEigenvalues >= energyPercentage)
+				break;
+		}
+		
+		int k = i+1;
 		int[] result = new int[k];
 		for (i = 0; i < k; i++)
 			result[i] = mixes[i].index;
+		
+		this.numOfComponents = k;
 		return result;
 	}
 
