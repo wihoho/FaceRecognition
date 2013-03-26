@@ -7,13 +7,13 @@ import Jama.Matrix;
 
 public class KNN {
 
-	public static String assignLabel(projectedTrainingMatrix[] trainingSet,
-			Matrix testFace, int K, Metric metric) {
-		return findKNN(trainingSet, testFace, K, metric);
+	public static String assignLabel(projectedTrainingMatrix[] trainingSet,Matrix testFace, int K, Metric metric) {
+		projectedTrainingMatrix[] neighbors = findKNN(trainingSet, testFace, K, metric);
+		return classify(neighbors);
 	}
 
 	// testFace has been projected to the subspace
-	static String findKNN(projectedTrainingMatrix[] trainingSet,
+	static projectedTrainingMatrix[] findKNN(projectedTrainingMatrix[] trainingSet,
 			Matrix testFace, int K, Metric metric) {
 		int NumOfTrainingSet = trainingSet.length;
 		assert K <= NumOfTrainingSet : "K is lager than the length of trainingSet!";
@@ -46,12 +46,12 @@ public class KNN {
 			if (neighbors[maxIndex].distance > trainingSet[i].distance)
 				neighbors[maxIndex] = trainingSet[i];
 		}
-		return classify(neighbors);
+		return neighbors;
 	}
 
 	// get the class label by using neighbors
 	static String classify(projectedTrainingMatrix[] neighbors) {
-		HashMap<String, Double> map = new HashMap();
+		HashMap<String, Double> map = new HashMap<String, Double>();
 		int num = neighbors.length;
 
 		for (int index = 0; index < num; index++) {
@@ -69,7 +69,7 @@ public class KNN {
 		// Find the most likely label
 		double maxSimilarity = 0;
 		String returnLabel = "";
-		Set labelSet = map.keySet();
+		Set<String> labelSet = map.keySet();
 		Iterator<String> it = labelSet.iterator();
 		while (it.hasNext()) {
 			String label = it.next();
