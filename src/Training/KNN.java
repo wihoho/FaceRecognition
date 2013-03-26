@@ -13,8 +13,7 @@ public class KNN {
 	}
 
 	// testFace has been projected to the subspace
-	static projectedTrainingMatrix[] findKNN(projectedTrainingMatrix[] trainingSet,
-			Matrix testFace, int K, Metric metric) {
+	static projectedTrainingMatrix[] findKNN(projectedTrainingMatrix[] trainingSet,Matrix testFace, int K, Metric metric) {
 		int NumOfTrainingSet = trainingSet.length;
 		assert K <= NumOfTrainingSet : "K is lager than the length of trainingSet!";
 

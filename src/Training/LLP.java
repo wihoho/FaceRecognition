@@ -57,12 +57,29 @@ public class LLP extends FeatureExtraction {
 	private Matrix constructNearestNeighborGraph(ArrayList<projectedTrainingMatrix> input){
 		int size = input.size();
 		Matrix S = new Matrix(size, size);
-
+		
+		Metric Euclidean = new EuclideanDistance();
+		projectedTrainingMatrix[] trainArray = input.toArray(new projectedTrainingMatrix[input.size()]);
+		
 		for(int i = 0; i < size; i ++){
-			for(int j = 0; j < size; j ++){
-				if( i != j && input.get(i).label.equals(input.get(j).label))
-					S.set(i, j, 1);
+			projectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 4, Euclidean);
+			for(int j = 0; j < neighbors.length; j ++){
+				if(!neighbors[j].equals(input.get(i))){
+					double distance = Euclidean.getDistance(neighbors[j].matrix, input.get(i).matrix);
+					double weight = Math.exp(0-distance*distance / 2);
+					int index = input.indexOf(neighbors[j]);
+					S.set(i, index, weight);
+					S.set(index, i, weight);
+				}
 			}
+			
+//			for(int j = 0; j < size; j ++){
+//				if( i != j && input.get(i).label.equals(input.get(j).label)){
+//					double distance = Euclidean.getDistance(input.get(i).matrix, input.get(j).matrix);
+//					double weight = Math.exp(0 - distance*distance / 1);
+//					S.set(i, j, 1);
+//				}
+//			}
 		}
 		return S;
 	}
