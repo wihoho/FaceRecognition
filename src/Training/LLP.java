@@ -12,15 +12,13 @@ import Jama.Matrix;
 
 public class LLP extends FeatureExtraction {
 
-	public LLP(ArrayList<Matrix> trainingSet, ArrayList<String> labels, int numOfComponents){
+	public LLP(ArrayList<Matrix> trainingSet, ArrayList<String> labels, int numOfComponents) throws Exception{
 		int n = trainingSet.size(); // sample size
 		Set<String> tempSet = new HashSet<String>(labels);
 		int c = tempSet.size(); // class size
-		assert numOfComponents >= n -c : "the input components is smaller than n - c!";
-		assert n >= 2*c : "n is smaller than 2c!";
 
 		// process in PCA
-		PCA pca = new PCA(trainingSet,labels, n - c);
+		PCA pca = new PCA(trainingSet,labels, numOfComponents);
 
 		//construct the nearest neighbor graph 
 		Matrix S = constructNearestNeighborGraph(pca.projectedTrainingSet);
@@ -38,7 +36,7 @@ public class LLP extends FeatureExtraction {
 
 		double[] d = feature.getd();
 		assert d.length >= c - 1 :"Ensure that the number of eigenvalues is larger than c - 1";
-		int[] indexes = getIndexesOfKEigenvalues(d,c-1);
+		int[] indexes = getIndexesOfKEigenvalues(d,d.length);
 
 		Matrix eigenVectors = feature.getV();
 		Matrix selectedEigenVectors = eigenVectors.getMatrix(0, eigenVectors.getRowDimension()-1,indexes);
@@ -62,7 +60,7 @@ public class LLP extends FeatureExtraction {
 		projectedTrainingMatrix[] trainArray = input.toArray(new projectedTrainingMatrix[input.size()]);
 		
 		for(int i = 0; i < size; i ++){
-			projectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 4, Euclidean);
+			projectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 6, Euclidean);
 			for(int j = 0; j < neighbors.length; j ++){
 				if(!neighbors[j].equals(input.get(i))){
 					double distance = Euclidean.getDistance(neighbors[j].matrix, input.get(i).matrix);
@@ -75,8 +73,6 @@ public class LLP extends FeatureExtraction {
 			
 //			for(int j = 0; j < size; j ++){
 //				if( i != j && input.get(i).label.equals(input.get(j).label)){
-//					double distance = Euclidean.getDistance(input.get(i).matrix, input.get(j).matrix);
-//					double weight = Math.exp(0 - distance*distance / 1);
 //					S.set(i, j, 1);
 //				}
 //			}
@@ -89,7 +85,7 @@ public class LLP extends FeatureExtraction {
 		Matrix D = new Matrix(size, size);
 
 		for(int i = 0; i < size; i++){
-			int temp = 0;
+			double temp = 0;
 			for(int j = 0; j < size; j ++){
 				temp += S.get(j, i);
 			}

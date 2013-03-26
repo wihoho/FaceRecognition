@@ -8,8 +8,12 @@ import Jama.Matrix;
 public class PCA extends FeatureExtraction {
 
 	public PCA(ArrayList<Matrix> trainingSet, ArrayList<String> labels,
-			int numOfComponents) {
-		assert numOfComponents <= trainingSet.size() : "the expected dimensions could not be achieved!";
+			int numOfComponents) throws Exception {
+		
+		if(numOfComponents >= trainingSet.size()){
+			throw new Exception("the expected dimensions could not be achieved!");
+		}
+		
 		this.trainingSet = trainingSet;
 		this.labels = labels;
 		this.numOfComponents = numOfComponents;

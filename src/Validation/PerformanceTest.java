@@ -12,11 +12,13 @@ import Training.*;
 
 public class PerformanceTest {
 	public static void main(String args[]){
-		System.out.print("LPP: ");
-		test(0,0.5,2,3,3);
+		test(2,98,0,3,3);
 		
+//		System.out.print("LPP: ");
+//		test(2,98,2,3,3);
+	
 //		System.out.print("LDA: ");
-//		test(2,0.5,1,3,3);
+//		test(2,98,1,3,2);
 //		
 //		System.out.print("LLP: ");
 //		test(2,0.5,2,3,3);
@@ -44,7 +46,7 @@ public class PerformanceTest {
 	 * knn_k: number of K for KNN algorithm
 	 * 
 	 * */
-	static void test(int metricType, double energyPercentage, int featureExtractionMode, int trainNums, int knn_k){
+	static void test(int metricType, int componentsRetained, int featureExtractionMode, int trainNums, int knn_k){
 		//determine which metric is used
 		//metric
 		Metric metric = null;
@@ -59,16 +61,14 @@ public class PerformanceTest {
 		
 		//set expectedComponents according to energyPercentage
 		//componentsRetained
-		int trainingSize = trainNums * 40;
-		int componentsRetained = 0;
-		if(featureExtractionMode == 0)
-			componentsRetained = (int) (trainingSize * energyPercentage);
-		else if(featureExtractionMode == 1)
-			componentsRetained = (int) ((40 -1) * energyPercentage);
-		else if(featureExtractionMode == 2)
-			componentsRetained = (int) ((40 -1) * energyPercentage);
-		
-		assert componentsRetained != 0 : "featureExtractionMode is wrong!";
+//		int trainingSize = trainNums * 40;
+//		int componentsRetained = 0;
+//		if(featureExtractionMode == 0)
+//			componentsRetained = (int) (trainingSize * energyPercentage);
+//		else if(featureExtractionMode == 1)
+//			componentsRetained = (int) ((40 -1) * energyPercentage);
+//		else if(featureExtractionMode == 2)
+//			componentsRetained = (int) ((40 -1) * energyPercentage);
 		
 		//set trainSet and testSet
 		HashMap<String, ArrayList<Integer>> trainMap = new HashMap();
@@ -130,30 +130,34 @@ public class PerformanceTest {
 		}
 		
 		//set featureExtraction
-		FeatureExtraction fe = null;
-		if(featureExtractionMode == 0)
-			fe = new PCA(trainingSet, labels,componentsRetained);
-		else if(featureExtractionMode == 1)
-			fe = new LDA(trainingSet, labels,componentsRetained);
-		else if(featureExtractionMode == 2)
-			fe = new LLP(trainingSet, labels,componentsRetained);
-		
-		//use test cases to validate
-		//testingSet   trueLables
-		ArrayList<projectedTrainingMatrix> projectedTrainingSet = fe.getProjectedTrainingSet();
-		int accurateNum = 0;
-		for(int i = 0 ; i < testingSet.size(); i ++){
-			Matrix testCase = fe.getW().transpose().times(testingSet.get(i).minus(fe.getMeanMatrix()));
-			String result = KNN.assignLabel(projectedTrainingSet.toArray(new projectedTrainingMatrix[0]), testCase, knn_k, metric);
-			System.out.println(result+"=="+trueLabels.get(i));
-			if(result == trueLabels.get(i))
-				accurateNum ++;
+		try{
+			FeatureExtraction fe = null;
+			if(featureExtractionMode == 0)
+				fe = new PCA(trainingSet, labels,componentsRetained);
+			else if(featureExtractionMode == 1)
+				fe = new LDA(trainingSet, labels,componentsRetained);
+			else if(featureExtractionMode == 2)
+				fe = new LLP(trainingSet, labels,componentsRetained);
+			
+			//use test cases to validate
+			//testingSet   trueLables
+			ArrayList<projectedTrainingMatrix> projectedTrainingSet = fe.getProjectedTrainingSet();
+			int accurateNum = 0;
+			for(int i = 0 ; i < testingSet.size(); i ++){
+				Matrix testCase = fe.getW().transpose().times(testingSet.get(i).minus(fe.getMeanMatrix()));
+				String result = KNN.assignLabel(projectedTrainingSet.toArray(new projectedTrainingMatrix[0]), testCase, knn_k, metric);
+				System.out.println(result+"=="+trueLabels.get(i));
+				if(result == trueLabels.get(i))
+					accurateNum ++;
+			}
+			System.out.println("The accuracy is "+accurateNum / (double)testingSet.size());
+		}catch(Exception e){
+			System.out.println(e.getMessage());
 		}
-		System.out.println("The accuracy is "+accurateNum / (double)testingSet.size());
-		
 	}
 	
 	
+		
 	
 	static ArrayList<Integer> generateTrainNums(int trainNum){
 		Random random = new Random();
