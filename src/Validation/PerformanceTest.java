@@ -12,17 +12,46 @@ import Training.*;
 
 public class PerformanceTest {
 	public static void main(String args[]){
-		test(2,98,0,3,3);
+		//Test Different Methods
+		//Notice that the second parameter which is a measurement of energy percentage does not apply to LDA and LPP
+		double pcaAccuracy = 0;
+		double ldaAccuracy = 0;
+		double lppAccuracy = 0;
+		for(int i = 0; i < 10; i++){
+			pcaAccuracy += test(2,60,0,3,3);
+			ldaAccuracy += test(2,60,1,3,3);
+			lppAccuracy += test(2,60,2,3,3);
+		}
 		
-//		System.out.print("LPP: ");
-//		test(2,98,2,3,3);
-	
-//		System.out.print("LDA: ");
-//		test(2,98,1,3,2);
-//		
-//		System.out.print("LLP: ");
-//		test(2,0.5,2,3,3);
-//		System.out.println();
+		pcaAccuracy /= 10;
+		ldaAccuracy /= 10;
+		lppAccuracy /= 10;
+		
+		System.out.println("PCA accuracy is :"+pcaAccuracy);
+		System.out.println("LDA accuracy is :"+ldaAccuracy);
+		System.out.println("LPP accuracy is :"+lppAccuracy);
+		
+		System.out.println();
+		
+		//metricType
+		test(0,98,0,3,3);
+		test(1,98,0,3,3);
+		test(2,98,0,3,3);
+		System.out.println();
+		
+		//trainNum
+		test(2,70,0,2,3);
+		test(2,70,0,3,3);
+		test(2,70,0,4,3);
+		test(2,70,0,5,3);
+		System.out.println();
+		
+		//knn-k
+		test(2,98,0,3,1);
+		test(2,98,0,3,2);
+		test(2,98,0,3,3);
+		test(2,98,0,3,4);
+		System.out.println();
 	}
 	
 	/*metricType:
@@ -46,7 +75,7 @@ public class PerformanceTest {
 	 * knn_k: number of K for KNN algorithm
 	 * 
 	 * */
-	static void test(int metricType, int componentsRetained, int featureExtractionMode, int trainNums, int knn_k){
+	static double test(int metricType, int componentsRetained, int featureExtractionMode, int trainNums, int knn_k){
 		//determine which metric is used
 		//metric
 		Metric metric = null;
@@ -146,14 +175,19 @@ public class PerformanceTest {
 			for(int i = 0 ; i < testingSet.size(); i ++){
 				Matrix testCase = fe.getW().transpose().times(testingSet.get(i).minus(fe.getMeanMatrix()));
 				String result = KNN.assignLabel(projectedTrainingSet.toArray(new projectedTrainingMatrix[0]), testCase, knn_k, metric);
-				System.out.println(result+"=="+trueLabels.get(i));
+		//		System.out.println(result+"=="+trueLabels.get(i));
 				if(result == trueLabels.get(i))
 					accurateNum ++;
 			}
-			System.out.println("The accuracy is "+accurateNum / (double)testingSet.size());
+			double accuracy = accurateNum / (double)testingSet.size();
+			System.out.println("The accuracy is "+accuracy);
+			return accuracy;
+			
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}
+		
+		return -1;
 	}
 	
 	

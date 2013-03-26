@@ -60,14 +60,14 @@ public class LLP extends FeatureExtraction {
 		projectedTrainingMatrix[] trainArray = input.toArray(new projectedTrainingMatrix[input.size()]);
 		
 		for(int i = 0; i < size; i ++){
-			projectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 6, Euclidean);
+			projectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 3, Euclidean);
 			for(int j = 0; j < neighbors.length; j ++){
 				if(!neighbors[j].equals(input.get(i))){
-					double distance = Euclidean.getDistance(neighbors[j].matrix, input.get(i).matrix);
-					double weight = Math.exp(0-distance*distance / 2);
+//					double distance = Euclidean.getDistance(neighbors[j].matrix, input.get(i).matrix);
+//					double weight = Math.exp(0-distance*distance / 2);
 					int index = input.indexOf(neighbors[j]);
-					S.set(i, index, weight);
-					S.set(index, i, weight);
+					S.set(i, index, 1);
+					S.set(index, i,1);
 				}
 			}
 			
