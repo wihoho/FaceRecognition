@@ -1,1 +1,16 @@
 /LLP$mix.class
+/CosineDissimilarity.class
+/EuclideanDistance.class
+/FeatureExtraction.class
+/FileManager.class
+/Jama
+/KNN.class
+/L1Distance.class
+/LDA$mix.class
+/LDA.class
+/LLP.class
+/MainTestDriver.class
+/Metric.class
+/PCA$mix.class
+/PCA.class
+/projectedTrainingMatrix.class
