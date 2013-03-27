@@ -14,44 +14,48 @@ public class PerformanceTest {
 	public static void main(String args[]){
 		//Test Different Methods
 		//Notice that the second parameter which is a measurement of energy percentage does not apply to LDA and LPP
-		double pcaAccuracy = 0;
-		double ldaAccuracy = 0;
-		double lppAccuracy = 0;
-		for(int i = 0; i < 10; i++){
-			pcaAccuracy += test(2,60,0,3,3);
-			ldaAccuracy += test(2,60,1,3,3);
-			lppAccuracy += test(2,60,2,3,3);
-		}
 		
-		pcaAccuracy /= 10;
-		ldaAccuracy /= 10;
-		lppAccuracy /= 10;
 		
-		System.out.println("PCA accuracy is :"+pcaAccuracy);
-		System.out.println("LDA accuracy is :"+ldaAccuracy);
-		System.out.println("LPP accuracy is :"+lppAccuracy);
+		test(2,60,2,3,2);
 		
-		System.out.println();
-		
-		//metricType
-		test(0,98,0,3,3);
-		test(1,98,0,3,3);
-		test(2,98,0,3,3);
-		System.out.println();
-		
-		//trainNum
-		test(2,70,0,2,3);
-		test(2,70,0,3,3);
-		test(2,70,0,4,3);
-		test(2,70,0,5,3);
-		System.out.println();
-		
-		//knn-k
-		test(2,98,0,3,1);
-		test(2,98,0,3,2);
-		test(2,98,0,3,3);
-		test(2,98,0,3,4);
-		System.out.println();
+//		double pcaAccuracy = 0;
+//		double ldaAccuracy = 0;
+//		double lppAccuracy = 0;
+//		for(int i = 0; i < 10; i++){
+//			pcaAccuracy += test(2,60,0,3,3);
+//			ldaAccuracy += test(2,60,1,3,3);
+//			lppAccuracy += test(2,60,2,3,3);
+//		}
+//		
+//		pcaAccuracy /= 10;
+//		ldaAccuracy /= 10;
+//		lppAccuracy /= 10;
+//		
+//		System.out.println("PCA accuracy is :"+pcaAccuracy);
+//		System.out.println("LDA accuracy is :"+ldaAccuracy);
+//		System.out.println("LPP accuracy is :"+lppAccuracy);
+//		
+//		System.out.println();
+//		
+//		//metricType
+//		test(0,98,0,3,3);
+//		test(1,98,0,3,3);
+//		test(2,98,0,3,3);
+//		System.out.println();
+//		
+//		//trainNum
+//		test(2,70,0,2,3);
+//		test(2,70,0,3,3);
+//		test(2,70,0,4,3);
+//		test(2,70,0,5,3);
+//		System.out.println();
+//		
+//		//knn-k
+//		test(2,98,0,3,1);
+//		test(2,98,0,3,2);
+//		test(2,98,0,3,3);
+//		test(2,98,0,3,4);
+//		System.out.println();
 	}
 	
 	/*metricType:
