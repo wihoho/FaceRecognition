@@ -10,9 +10,9 @@ import Jama.Matrix;
 
 
 
-public class LLP extends FeatureExtraction {
+public class LPP extends FeatureExtraction {
 
-	public LLP(ArrayList<Matrix> trainingSet, ArrayList<String> labels, int numOfComponents) throws Exception{
+	public LPP(ArrayList<Matrix> trainingSet, ArrayList<String> labels, int numOfComponents) throws Exception{
 		int n = trainingSet.size(); // sample size
 		Set<String> tempSet = new HashSet<String>(labels);
 		int c = tempSet.size(); // class size

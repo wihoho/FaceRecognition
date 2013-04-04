@@ -12,7 +12,7 @@ import Jama.Matrix;
 public class LDA extends FeatureExtraction {
 
 	public LDA(ArrayList<Matrix> trainingSet, ArrayList<String> labels,
-			int numOfComponents) throws Exception {
+		int numOfComponents) throws Exception {
 		int n = trainingSet.size(); // sample size
 		Set<String> tempSet = new HashSet<String>(labels);
 		int c = tempSet.size(); // class size
