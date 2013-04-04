@@ -13,6 +13,6 @@ Because of the limitation of Markdown, I provide [the pdf document](https://www.
 [2] Turk, M., & Pentland, A. (1991). Eigenfaces for recognition. Journal of cognitive neuroscience, 3(1), 71-86.  
 [3] Belhumeur, P. N., Hespanha, J. P., & Kriegman, D. J. (1997). Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7), 711-720.  
 [4]  He, X., Yan, S., Hu, Y., Niyogi, P., & Zhang, H. J. (2005). Face recognition using laplacianfaces. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 27(3), 328-340.  
-[5] bytefish, awesome project, [https://github.com/wihoho/facerec.git](https://github.com/wihoho/facerec.git)
+[5] bytefish, awesome project, [https://github.com/bytefish/facerec.git](https://github.com/bytefish/facerec.git)
 
 
