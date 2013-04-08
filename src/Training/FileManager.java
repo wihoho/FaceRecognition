@@ -52,7 +52,7 @@ public class FileManager {
 	}
 
 	// Convert Matrix to PGM with numbers of row and column
-	static Matrix normalize(Matrix input){
+	public static Matrix normalize(Matrix input){
 		int row = input.getRowDimension();
 
 		for(int i = 0; i < row; i ++){
@@ -97,7 +97,7 @@ public class FileManager {
 			
 		
 			BufferedImage img = new BufferedImage(92,112,BufferedImage.TYPE_BYTE_GRAY);
-			 WritableRaster raster = img.getRaster();
+			WritableRaster raster = img.getRaster();
 			
 			for(int m = 0; m < 112; m ++ ){
 				for(int n = 0; n < 92; n ++){
@@ -119,6 +119,26 @@ public class FileManager {
 			
 			ImageIO.write(img,"bmp",file);
 		}
+		
+	}
+	
+	//convert single matrix to an image
+	public static void convertToImage(Matrix input, int name) throws IOException{
+		File file = new File(name+" dimensions.bmp");
+		if(!file.exists())
+			file.createNewFile();
+		
+		BufferedImage img = new BufferedImage(92,112,BufferedImage.TYPE_BYTE_GRAY);
+		WritableRaster raster = img.getRaster();
+		
+		for(int m = 0; m < 112; m ++ ){
+			for(int n = 0; n < 92; n ++){
+				int value = (int)input.get(n*112+m, 0);
+				raster.setSample(n,m,0,value); 
+			}
+		}
+		
+		ImageIO.write(img,"bmp",file);
 		
 	}
 	

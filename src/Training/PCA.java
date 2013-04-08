@@ -66,8 +66,7 @@ public class PCA extends FeatureExtraction {
 			temp = Math.sqrt(temp);
 
 			for (j = 0; j < row; j++) {
-				selectedEigenVectors.set(j, i, selectedEigenVectors.get(j, i)
-						/ temp);
+				selectedEigenVectors.set(j, i, selectedEigenVectors.get(j, i) / temp);
 			}
 		}
 
@@ -138,6 +137,20 @@ public class PCA extends FeatureExtraction {
 	public Matrix getMeanMatrix() {
 		// TODO Auto-generated method stub
 		return meanMatrix;
+	}
+	
+	public ArrayList<Matrix> getTrainingSet(){
+		return this.trainingSet;
+	}
+	
+	public Matrix reconstruct(int whichImage, int dimensions) throws Exception{
+		if(dimensions > this.numOfComponents)
+			throw new Exception("dimensions should be smaller than the number of components");
+		
+		Matrix afterPCA = this.projectedTrainingSet.get(whichImage).matrix.getMatrix(0, dimensions-1, 0, 0);
+		Matrix eigen = this.getW().getMatrix(0, 10304-1, 0, dimensions - 1);
+		return eigen.times(afterPCA).plus(this.getMeanMatrix());
+		
 	}
 
 }
