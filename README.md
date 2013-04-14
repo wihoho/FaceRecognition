@@ -8,6 +8,8 @@ The below figure shows respective feature space:
 ##Design
 Because of the limitation of Markdown, I provide [the pdf document](https://www.dropbox.com/s/pvnd20j5xdo5wg6/FaceRecognition.pdf) for your reference.
 
+Presentation: [https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf](https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf "PDF")
+
 ##Acknowledgement
 [1] Delac, K., Grgic, M., & Grgic, S. (2005). Independent comparative study of PCA, ICA, and LDA on the FERET data set. International Journal of Imaging Systems and Technology, 15(5), 252-260.  
 [2] Turk, M., & Pentland, A. (1991). Eigenfaces for recognition. Journal of cognitive neuroscience, 3(1), 71-86.  
