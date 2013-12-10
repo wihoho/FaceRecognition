@@ -6,9 +6,9 @@ The below figure shows respective feature space:
 ![](https://lh5.googleusercontent.com/-KtrqHFBv7l8/UV1tYE4zvtI/AAAAAAAAA24/Bf8x6b3UER8/s730/Eigenfaces.jpg)
 
 ##Design
-Because of the limitation of Markdown, I provide [the pdf document](https://www.dropbox.com/s/pvnd20j5xdo5wg6/FaceRecognition.pdf) for your reference.
+Because of the limitation of Markdown, I provide [the pdf document](https://dl.dropboxusercontent.com/u/37572555/Github/Face%20Recognition/FaceRecognition.pdf) for your reference.
 
-Presentation: [https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf](https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf "PDF")
+Presentation: [https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf](https://dl.dropboxusercontent.com/u/37572555/Github/Face%20Recognition/Face%20Recognition%20Demo.pdf)
 
 ##Acknowledgement
 [1] Delac, K., Grgic, M., & Grgic, S. (2005). Independent comparative study of PCA, ICA, and LDA on the FERET data set. International Journal of Imaging Systems and Technology, 15(5), 252-260.  
