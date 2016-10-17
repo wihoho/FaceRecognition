@@ -1,7 +1,8 @@
-package Training;
+package com.wihoho.training;
 import java.util.ArrayList;
 
-import Jama.Matrix;
+import com.wihoho.jama.Matrix;
+
 
 public abstract class FeatureExtraction {
 	ArrayList<Matrix> trainingSet;
@@ -10,11 +11,11 @@ public abstract class FeatureExtraction {
 	Matrix meanMatrix;
 	// Output
 	Matrix W;
-	ArrayList<projectedTrainingMatrix> projectedTrainingSet;
+	ArrayList<ProjectedTrainingMatrix> projectedTrainingSet;
 
 	public abstract Matrix getW();
 
-	public abstract ArrayList<projectedTrainingMatrix> getProjectedTrainingSet();
+	public abstract ArrayList<ProjectedTrainingMatrix> getProjectedTrainingSet();
 
 	public abstract Matrix getMeanMatrix();
 }

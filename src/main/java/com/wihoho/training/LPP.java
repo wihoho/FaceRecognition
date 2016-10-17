@@ -1,13 +1,12 @@
-package Training;
+package com.wihoho.training;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import Jama.EigenvalueDecomposition;
-import Jama.Matrix;
-
+import com.wihoho.jama.EigenvalueDecomposition;
+import com.wihoho.jama.Matrix;
 
 
 public class LPP extends FeatureExtraction {
@@ -44,23 +43,23 @@ public class LPP extends FeatureExtraction {
 		this.W = pca.getW().times(selectedEigenVectors);
 
 		//Construct projectedTrainingMatrix
-		this.projectedTrainingSet = new ArrayList<projectedTrainingMatrix>();
+		this.projectedTrainingSet = new ArrayList<ProjectedTrainingMatrix>();
 		for(int i = 0; i < trainingSet.size(); i ++){
-			projectedTrainingMatrix ptm = new projectedTrainingMatrix(this.W.transpose().times(trainingSet.get(i).minus(pca.meanMatrix)),labels.get(i));
+			ProjectedTrainingMatrix ptm = new ProjectedTrainingMatrix(this.W.transpose().times(trainingSet.get(i).minus(pca.meanMatrix)),labels.get(i));
 			this.projectedTrainingSet.add(ptm);
 		}
 		this.meanMatrix = pca.meanMatrix;
 	}
 
-	private Matrix constructNearestNeighborGraph(ArrayList<projectedTrainingMatrix> input){
+	private Matrix constructNearestNeighborGraph(ArrayList<ProjectedTrainingMatrix> input){
 		int size = input.size();
 		Matrix S = new Matrix(size, size);
 		
 		Metric Euclidean = new EuclideanDistance();
-		projectedTrainingMatrix[] trainArray = input.toArray(new projectedTrainingMatrix[input.size()]);
+		ProjectedTrainingMatrix[] trainArray = input.toArray(new ProjectedTrainingMatrix[input.size()]);
 		
 		for(int i = 0; i < size; i ++){
-			projectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 3, Euclidean);
+			ProjectedTrainingMatrix[] neighbors = KNN.findKNN(trainArray, input.get(i).matrix, 3, Euclidean);
 			for(int j = 0; j < neighbors.length; j ++){
 				if(!neighbors[j].equals(input.get(i))){
 //					double distance = Euclidean.getDistance(neighbors[j].matrix, input.get(i).matrix);
@@ -95,7 +94,7 @@ public class LPP extends FeatureExtraction {
 		return D;
 	}
 
-	private Matrix constructTrainingMatrix(ArrayList<projectedTrainingMatrix> input){
+	private Matrix constructTrainingMatrix(ArrayList<ProjectedTrainingMatrix> input){
 		int row = input.get(0).matrix.getRowDimension();
 		int column = input.size();
 		Matrix X = new Matrix(row, column);
@@ -130,7 +129,6 @@ public class LPP extends FeatureExtraction {
 			value = v;
 		}
 
-		@Override
 		public int compareTo(Object o) {
 			double target = ((mix)o).value;
 			if(value > target)
@@ -148,7 +146,7 @@ public class LPP extends FeatureExtraction {
 	}
 
 	@Override
-	public ArrayList<projectedTrainingMatrix> getProjectedTrainingSet() {
+	public ArrayList<ProjectedTrainingMatrix> getProjectedTrainingSet() {
 		return this.projectedTrainingSet;
 	}
 

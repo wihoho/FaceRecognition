@@ -1,6 +1,7 @@
-package Jama;
+package com.wihoho.jama;
 
-   /** Cholesky Decomposition.
+
+/** Cholesky Decomposition.
    <P>
    For a symmetric, positive definite matrix A, the Cholesky decomposition
    is an lower triangular matrix L so that A = L*L'.

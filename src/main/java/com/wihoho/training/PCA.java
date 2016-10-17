@@ -1,14 +1,15 @@
-package Training;
+package com.wihoho.training;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Jama.EigenvalueDecomposition;
-import Jama.Matrix;
+import com.wihoho.jama.EigenvalueDecomposition;
+import com.wihoho.jama.Matrix;
+
 
 public class PCA extends FeatureExtraction {
 
 	public PCA(ArrayList<Matrix> trainingSet, ArrayList<String> labels,
-			int numOfComponents) throws Exception {
+			   int numOfComponents) throws Exception {
 		
 		if(numOfComponents >= trainingSet.size()){
 			throw new Exception("the expected dimensions could not be achieved!");
@@ -22,9 +23,9 @@ public class PCA extends FeatureExtraction {
 		this.W = getFeature(this.trainingSet, this.numOfComponents);
 
 		// Construct projectedTrainingMatrix
-		this.projectedTrainingSet = new ArrayList<projectedTrainingMatrix>();
+		this.projectedTrainingSet = new ArrayList<ProjectedTrainingMatrix>();
 		for (int i = 0; i < trainingSet.size(); i++) {
-			projectedTrainingMatrix ptm = new projectedTrainingMatrix(this.W
+			ProjectedTrainingMatrix ptm = new ProjectedTrainingMatrix(this.W
 					.transpose().times(trainingSet.get(i).minus(meanMatrix)),
 					labels.get(i));
 			this.projectedTrainingSet.add(ptm);
@@ -84,7 +85,6 @@ public class PCA extends FeatureExtraction {
 			value = v;
 		}
 
-		@Override
 		public int compareTo(Object o) {
 			double target = ((mix) o).value;
 			if (value > target)
@@ -129,7 +129,7 @@ public class PCA extends FeatureExtraction {
 	}
 
 	@Override
-	public ArrayList<projectedTrainingMatrix> getProjectedTrainingSet() {
+	public ArrayList<ProjectedTrainingMatrix> getProjectedTrainingSet() {
 		return this.projectedTrainingSet;
 	}
 	

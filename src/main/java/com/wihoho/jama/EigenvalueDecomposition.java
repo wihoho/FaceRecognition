@@ -1,7 +1,8 @@
-package Jama;
-import Jama.util.*;
+package com.wihoho.jama;
 
-/** Eigenvalues and eigenvectors of a real matrix. 
+import com.wihoho.jama.util.Maths;
+
+/** Eigenvalues and eigenvectors of a real matrix.
 <P>
     If A is symmetric, then A = V*D*V' where the eigenvalue matrix D is
     diagonal and the eigenvector matrix V is orthogonal.

@@ -1,5 +1,6 @@
-package Jama;
-import Jama.util.*;
+package com.wihoho.jama;
+
+import com.wihoho.jama.util.Maths;
 
 /** QR Decomposition.
 <P>

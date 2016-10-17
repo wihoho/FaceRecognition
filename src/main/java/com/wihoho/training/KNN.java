@@ -1,24 +1,25 @@
-package Training;
+package com.wihoho.training;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-import Jama.Matrix;
+import com.wihoho.jama.Matrix;
+
 
 public class KNN {
 
-	public static String assignLabel(projectedTrainingMatrix[] trainingSet,Matrix testFace, int K, Metric metric) {
-		projectedTrainingMatrix[] neighbors = findKNN(trainingSet, testFace, K, metric);
+	public static String assignLabel(ProjectedTrainingMatrix[] trainingSet, Matrix testFace, int K, Metric metric) {
+		ProjectedTrainingMatrix[] neighbors = findKNN(trainingSet, testFace, K, metric);
 		return classify(neighbors);
 	}
 
 	// testFace has been projected to the subspace
-	static projectedTrainingMatrix[] findKNN(projectedTrainingMatrix[] trainingSet,Matrix testFace, int K, Metric metric) {
+	static ProjectedTrainingMatrix[] findKNN(ProjectedTrainingMatrix[] trainingSet, Matrix testFace, int K, Metric metric) {
 		int NumOfTrainingSet = trainingSet.length;
 		assert K <= NumOfTrainingSet : "K is lager than the length of trainingSet!";
 
 		// initialization
-		projectedTrainingMatrix[] neighbors = new projectedTrainingMatrix[K];
+		ProjectedTrainingMatrix[] neighbors = new ProjectedTrainingMatrix[K];
 		int i;
 		for (i = 0; i < K; i++) {
 			trainingSet[i].distance = metric.getDistance(trainingSet[i].matrix,
@@ -49,12 +50,12 @@ public class KNN {
 	}
 
 	// get the class label by using neighbors
-	static String classify(projectedTrainingMatrix[] neighbors) {
+	static String classify(ProjectedTrainingMatrix[] neighbors) {
 		HashMap<String, Double> map = new HashMap<String, Double>();
 		int num = neighbors.length;
 
 		for (int index = 0; index < num; index++) {
-			projectedTrainingMatrix temp = neighbors[index];
+			ProjectedTrainingMatrix temp = neighbors[index];
 			String key = temp.label;
 			if (!map.containsKey(key))
 				map.put(key, 1 / temp.distance);

@@ -1,4 +1,4 @@
-package Jama;
+package com.wihoho.jama;
 
    /** LU Decomposition.
    <P>
