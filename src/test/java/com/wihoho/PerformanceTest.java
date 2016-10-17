@@ -2,7 +2,9 @@ package com.wihoho;
 
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,6 +13,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import com.google.common.io.ByteStreams;
+import com.google.common.io.Resources;
 import com.wihoho.jama.Matrix;
 import com.wihoho.training.CosineDissimilarity;
 import com.wihoho.training.EuclideanDistance;
@@ -29,7 +33,7 @@ import static junit.framework.Assert.assertTrue;
 public class PerformanceTest {
 
     @Test
-    public void testPerformance() {
+    public void testPerformance() throws IOException {
         //Test Different Methods
         //Notice that the second parameter which is a measurement of energy percentage does not apply to LDA and LPP
 
@@ -58,7 +62,7 @@ public class PerformanceTest {
      * knn_k: number of K for KNN algorithm
      *
      * */
-    double test(int metricType, int componentsRetained, int featureExtractionMode, int trainNums, int knn_k) {
+    double test(int metricType, int componentsRetained, int featureExtractionMode, int trainNums, int knn_k) throws IOException {
         //determine which metric is used
         //metric
         Metric metric = null;
@@ -105,11 +109,16 @@ public class PerformanceTest {
             String label = it.next();
             ArrayList<Integer> cases = trainMap.get(label);
             for (int i = 0; i < cases.size(); i++) {
-                String filePath = "faces/" + label + "/" + cases.get(i) + ".pgm";
-                File file = new File(classLoader.getResource(filePath).getFile());
+                String filePath = "/faces/" + label + "/" + cases.get(i) + ".pgm";
+                InputStream inputStream = Resources.class.getResourceAsStream(filePath);
+                File tempFile = File.createTempFile("pic", ",pgm");
+                tempFile.deleteOnExit();
+
+                ByteStreams.copy(inputStream, new FileOutputStream(tempFile));
+
                 Matrix temp;
                 try {
-                    temp = FileManager.convertPGMtoMatrix(file.getAbsolutePath());
+                    temp = FileManager.convertPGMtoMatrix(tempFile.getAbsolutePath());
                     trainingSet.add(vectorize(temp));
                     labels.add(label);
                 } catch (IOException e) {
@@ -129,10 +138,17 @@ public class PerformanceTest {
             String label = it.next();
             ArrayList<Integer> cases = testMap.get(label);
             for (int i = 0; i < cases.size(); i++) {
-                String filePath = "faces/" + label + "/" + cases.get(i) + ".pgm";
+                String filePath = "/faces/" + label + "/" + cases.get(i) + ".pgm";
+
+                InputStream inputStream = Resources.class.getResourceAsStream(filePath);
+                File tempFile = File.createTempFile("pic", ",pgm");
+                tempFile.deleteOnExit();
+
+                ByteStreams.copy(inputStream, new FileOutputStream(tempFile));
+
                 Matrix temp;
                 try {
-                    temp = FileManager.convertPGMtoMatrix(filePath);
+                    temp = FileManager.convertPGMtoMatrix(tempFile.getAbsolutePath());
                     testingSet.add(vectorize(temp));
                     trueLabels.add(label);
                 } catch (IOException e) {
