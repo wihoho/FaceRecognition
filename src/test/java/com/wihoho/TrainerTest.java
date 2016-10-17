@@ -1,21 +1,16 @@
 package com.wihoho;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.junit.Test;
-
 import com.wihoho.constant.FeatureType;
 import com.wihoho.jama.Matrix;
 import com.wihoho.training.CosineDissimilarity;
 import com.wihoho.training.FileManager;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- *
- * @author Gong Li <gong_l@worksap.co.jp> on 17/10/2016.
- */
 public class TrainerTest {
     ClassLoader classLoader = getClass().getClassLoader();
 

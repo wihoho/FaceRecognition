@@ -1,24 +1,14 @@
 package com.wihoho;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import lombok.experimental.Builder;
-
 import com.google.common.base.Preconditions;
 import com.wihoho.constant.FeatureType;
 import com.wihoho.jama.Matrix;
-import com.wihoho.training.FeatureExtraction;
-import com.wihoho.training.KNN;
-import com.wihoho.training.LDA;
-import com.wihoho.training.LPP;
-import com.wihoho.training.Metric;
-import com.wihoho.training.PCA;
-import com.wihoho.training.ProjectedTrainingMatrix;
+import com.wihoho.training.*;
+import lombok.experimental.Builder;
 
-/**
- *
- * @author Gong Li <gong_l@worksap.co.jp> on 17/10/2016.
- */
+import java.util.ArrayList;
+import java.util.Objects;
+
 @Builder
 public class Trainer {
     Metric metric;
