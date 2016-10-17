@@ -1,0 +1,9 @@
+language: java
+sudo: required
+
+before_script:
+  - cd mitielib/java/maven
+  - mvn test
+
+jdk:
+  - oraclejdk8
