@@ -1,9 +1,10 @@
-package com.wihoho.training;
+package com.github.wihoho.training;
+
+import com.github.wihoho.jama.EigenvalueDecomposition;
+import com.github.wihoho.jama.Matrix;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import com.wihoho.jama.EigenvalueDecomposition;
-import com.wihoho.jama.Matrix;
 
 
 public class PCA extends FeatureExtraction {

@@ -1,4 +1,4 @@
-package com.wihoho.jama;
+package com.github.wihoho.jama;
 
 
 /** Cholesky Decomposition.

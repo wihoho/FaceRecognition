@@ -1,4 +1,4 @@
-package com.wihoho.constant;
+package com.github.wihoho.constant;
 
 public enum FeatureType {
     PCA,

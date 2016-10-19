@@ -1,12 +1,12 @@
-package com.wihoho.training;
+package com.github.wihoho.training;
+
+import com.github.wihoho.jama.EigenvalueDecomposition;
+import com.github.wihoho.jama.Matrix;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.wihoho.jama.EigenvalueDecomposition;
-import com.wihoho.jama.Matrix;
 
 
 public class LPP extends FeatureExtraction {

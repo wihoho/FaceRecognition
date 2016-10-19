@@ -1,5 +1,8 @@
-package com.wihoho.training;
+package com.github.wihoho.training;
 
+import com.github.wihoho.jama.Matrix;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.io.DataInputStream;
@@ -7,10 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
-
-import javax.imageio.ImageIO;
-
-import com.wihoho.jama.Matrix;
 
 
 public class FileManager {

@@ -1,32 +1,17 @@
-package com.wihoho;
+package com.github.wihoho;
 
+
+import com.github.wihoho.jama.Matrix;
+import com.github.wihoho.training.*;
+import com.google.common.io.ByteStreams;
+import com.google.common.io.Resources;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
-
-import org.junit.Test;
-
-import com.google.common.io.ByteStreams;
-import com.google.common.io.Resources;
-import com.wihoho.jama.Matrix;
-import com.wihoho.training.CosineDissimilarity;
-import com.wihoho.training.EuclideanDistance;
-import com.wihoho.training.FeatureExtraction;
-import com.wihoho.training.FileManager;
-import com.wihoho.training.KNN;
-import com.wihoho.training.L1Distance;
-import com.wihoho.training.LDA;
-import com.wihoho.training.LPP;
-import com.wihoho.training.Metric;
-import com.wihoho.training.PCA;
-import com.wihoho.training.ProjectedTrainingMatrix;
+import java.util.*;
 
 import static junit.framework.Assert.assertTrue;
 

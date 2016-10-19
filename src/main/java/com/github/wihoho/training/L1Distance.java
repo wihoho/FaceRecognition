@@ -1,6 +1,6 @@
-package com.wihoho.training;
+package com.github.wihoho.training;
 
-import com.wihoho.jama.Matrix;
+import com.github.wihoho.jama.Matrix;
 
 public class L1Distance implements Metric {
 

@@ -1,14 +1,9 @@
-package com.wihoho.training;
+package com.github.wihoho.training;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.github.wihoho.jama.EigenvalueDecomposition;
+import com.github.wihoho.jama.Matrix;
 
-import com.wihoho.jama.EigenvalueDecomposition;
-import com.wihoho.jama.Matrix;
+import java.util.*;
 
 
 public class LDA extends FeatureExtraction {

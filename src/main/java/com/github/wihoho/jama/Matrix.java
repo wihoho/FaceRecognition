@@ -1,4 +1,6 @@
-package com.wihoho.jama;
+package com.github.wihoho.jama;
+
+import com.github.wihoho.jama.util.Maths;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -7,8 +9,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
-
-import com.wihoho.jama.util.Maths;
 
 /**
    Jama = Java Matrix class.
@@ -521,7 +521,7 @@ public class Matrix implements Cloneable, java.io.Serializable {
       double f = 0;
       for (int i = 0; i < m; i++) {
          for (int j = 0; j < n; j++) {
-            f = Maths.hypot(f,A[i][j]);
+            f = Maths.hypot(f, A[i][j]);
          }
       }
       return f;

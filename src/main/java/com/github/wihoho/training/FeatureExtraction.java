@@ -1,7 +1,8 @@
-package com.wihoho.training;
-import java.util.ArrayList;
+package com.github.wihoho.training;
 
-import com.wihoho.jama.Matrix;
+import com.github.wihoho.jama.Matrix;
+
+import java.util.ArrayList;
 
 
 public abstract class FeatureExtraction {

@@ -1,6 +1,6 @@
-package com.wihoho.jama;
+package com.github.wihoho.jama;
 
-import com.wihoho.jama.util.Maths;
+import com.github.wihoho.jama.util.Maths;
 
 /** Singular Value Decomposition.
    <P>
@@ -83,7 +83,7 @@ public class SingularValueDecomposition implements java.io.Serializable {
             // Compute 2-norm of k-th column without under/overflow.
             s[k] = 0;
             for (int i = k; i < m; i++) {
-               s[k] = Maths.hypot(s[k],A[i][k]);
+               s[k] = Maths.hypot(s[k], A[i][k]);
             }
             if (s[k] != 0.0) {
                if (A[k][k] < 0.0) {

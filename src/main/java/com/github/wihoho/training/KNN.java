@@ -1,9 +1,10 @@
-package com.wihoho.training;
+package com.github.wihoho.training;
+
+import com.github.wihoho.jama.Matrix;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-
-import com.wihoho.jama.Matrix;
 
 
 public class KNN {

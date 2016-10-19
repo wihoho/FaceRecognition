@@ -1,6 +1,6 @@
-package com.wihoho.jama;
+package com.github.wihoho.jama;
 
-import com.wihoho.jama.util.Maths;
+import com.github.wihoho.jama.util.Maths;
 
 /** Eigenvalues and eigenvectors of a real matrix.
 <P>
@@ -217,7 +217,7 @@ public class EigenvalueDecomposition implements java.io.Serializable {
    
                double g = d[l];
                double p = (d[l+1] - g) / (2.0 * e[l]);
-               double r = Maths.hypot(p,1.0);
+               double r = Maths.hypot(p, 1.0);
                if (p < 0) {
                   r = -r;
                }

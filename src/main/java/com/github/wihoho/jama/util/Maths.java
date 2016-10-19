@@ -1,4 +1,4 @@
-package com.wihoho.jama.util;
+package com.github.wihoho.jama.util;
 
 public class Maths {
 

@@ -1,9 +1,9 @@
-package com.wihoho;
+package com.github.wihoho;
 
+import com.github.wihoho.constant.FeatureType;
+import com.github.wihoho.jama.Matrix;
+import com.github.wihoho.training.*;
 import com.google.common.base.Preconditions;
-import com.wihoho.constant.FeatureType;
-import com.wihoho.jama.Matrix;
-import com.wihoho.training.*;
 import lombok.experimental.Builder;
 
 import java.util.ArrayList;
