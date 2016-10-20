@@ -1,13 +1,14 @@
 package com.github.wihoho;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.junit.Test;
+
 import com.github.wihoho.constant.FeatureType;
 import com.github.wihoho.jama.Matrix;
 import com.github.wihoho.training.CosineDissimilarity;
 import com.github.wihoho.training.FileManager;
-import org.junit.Test;
-
-import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,6 +17,7 @@ public class TrainerTest {
 
     @Test
     public void testTraining() throws Exception {
+        // Build a trainer
         Trainer trainer = Trainer.builder()
                 .metric(new CosineDissimilarity())
                 .featureType(FeatureType.PCA)
@@ -33,6 +35,7 @@ public class TrainerTest {
         String smith3 = "faces/s4/3.pgm";
         String smith4 = "faces/s4/4.pgm";
 
+        // add training data
         trainer.add(convertToMatrix(john1), "john");
         trainer.add(convertToMatrix(john2), "john");
         trainer.add(convertToMatrix(john3), "john");
@@ -41,8 +44,10 @@ public class TrainerTest {
         trainer.add(convertToMatrix(smith2), "smith");
         trainer.add(convertToMatrix(smith3), "smith");
 
+        // train
         trainer.train();
 
+        // recognize
         assertEquals("john", trainer.recognize(convertToMatrix(john4)));
         assertEquals("smith", trainer.recognize(convertToMatrix(smith4)));
     }

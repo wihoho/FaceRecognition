@@ -10,6 +10,45 @@ Because of the limitation of Markdown, I provide [the pdf document](https://dl.d
 
 Presentation: [https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf](https://dl.dropboxusercontent.com/u/37572555/Github/Face%20Recognition/Face%20Recognition%20Demo.pdf)
 
+
+##Usage
+As many people asked me about this project, I decided to revamp this project into a maven project and release maven dependency to make this project easier to be used by
+others. In order to use this library, this first step is to add the below dependency.
+
+    <dependency>
+      <groupId>com.github.wihoho</groupId>
+      <artifactId>face-recognition</artifactId>
+      <version>1.0</version>
+    </dependency>
+
+After that, you may refer to <code>com.github.wihoho.TrainerTest</code> as below on the usage of the API.
+
+    // Build a trainer
+    Trainer trainer = Trainer.builder()
+            .metric(new CosineDissimilarity())
+            .featureType(FeatureType.PCA)
+            .numberOfComponents(3)
+            .k(1)
+            .build();
+
+    ...
+
+    // add training data
+    trainer.add(convertToMatrix(john1), "john");
+    trainer.add(convertToMatrix(john2), "john");
+    trainer.add(convertToMatrix(john3), "john");
+
+    trainer.add(convertToMatrix(smith1), "smith");
+    trainer.add(convertToMatrix(smith2), "smith");
+    trainer.add(convertToMatrix(smith3), "smith");
+
+    // train
+    trainer.train();
+
+    // recognize
+    assertEquals("john", trainer.recognize(convertToMatrix(john4)));
+    assertEquals("smith", trainer.recognize(convertToMatrix(smith4)));
+
 ##Acknowledgement
 [1] Delac, K., Grgic, M., & Grgic, S. (2005). Independent comparative study of PCA, ICA, and LDA on the FERET data set. International Journal of Imaging Systems and Technology, 15(5), 252-260.  
 [2] Turk, M., & Pentland, A. (1991). Eigenfaces for recognition. Journal of cognitive neuroscience, 3(1), 71-86.  
@@ -19,3 +58,13 @@ Presentation: [https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20De
 [6] ORL Database of Faces, [http://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html](http://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html)
 
 
+##License
+MIT License
+
+Copyright © 2016 wihoho <wihoho@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
