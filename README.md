@@ -1,17 +1,17 @@
-##Introduction [![Build Status](https://travis-ci.org/wihoho/FaceRecognition.svg?branch=master)](https://travis-ci.org/wihoho/FaceRecognition)
+## Introduction [![Build Status](https://travis-ci.org/wihoho/FaceRecognition.svg?branch=master)](https://travis-ci.org/wihoho/FaceRecognition)
 
 In this project, PCA, LDA and LPP are successfully implemented in Java for face recognition. After the system is trained by the training data, the feature space “eigenfaces” through PCA, the feature space “fisherfaces” through LDA and the feature space “laplacianfaces” through LPP are found using respective methods. Later in this report, W is used to represent the obtained feature space. Once W is obtained, training faces are projected to subspace defined by W to construct FaceDB. When an unknown face is needed to recognize, this test face is firstly projected onto subspace W. Afterward, the program finds the K nearest neighbors of the projected data in FaceDB. Finally, the class label is assigned to the test face according to the majority vote among the neighbors. This classification algorithm is known as K-nearest neighbor. 
 
 The below figure shows respective feature space:
 ![](https://lh5.googleusercontent.com/-KtrqHFBv7l8/UV1tYE4zvtI/AAAAAAAAA24/Bf8x6b3UER8/s730/Eigenfaces.jpg)
 
-##Design
+## Design
 Because of the limitation of Markdown, I provide [the pdf document](https://dl.dropboxusercontent.com/u/37572555/Github/Face%20Recognition/FaceRecognition.pdf) for your reference.
 
 Presentation: [https://www.dropbox.com/s/bawrbgx78kin9xf/Face%20Recognition%20Demo.pdf](https://dl.dropboxusercontent.com/u/37572555/Github/Face%20Recognition/Face%20Recognition%20Demo.pdf)
 
 
-##Usage
+## Usage
 As many people asked me about this project, I decided to revamp this project into a maven project and release maven dependency to make this project easier to be used by
 others. In order to use this library, this first step is to add the below dependency.
 
@@ -49,7 +49,7 @@ After that, you may refer to <code>com.github.wihoho.TrainerTest</code> as below
     assertEquals("john", trainer.recognize(convertToMatrix(john4)));
     assertEquals("smith", trainer.recognize(convertToMatrix(smith4)));
 
-##Acknowledgement
+## Acknowledgement
 [1] Delac, K., Grgic, M., & Grgic, S. (2005). Independent comparative study of PCA, ICA, and LDA on the FERET data set. International Journal of Imaging Systems and Technology, 15(5), 252-260.  
 [2] Turk, M., & Pentland, A. (1991). Eigenfaces for recognition. Journal of cognitive neuroscience, 3(1), 71-86.  
 [3] Belhumeur, P. N., Hespanha, J. P., & Kriegman, D. J. (1997). Eigenfaces vs. fisherfaces: Recognition using class specific linear projection. Pattern Analysis and Machine Intelligence, IEEE Transactions on, 19(7), 711-720.  
@@ -58,7 +58,7 @@ After that, you may refer to <code>com.github.wihoho.TrainerTest</code> as below
 [6] ORL Database of Faces, [http://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html](http://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html)
 
 
-##License
+## License
 MIT License
 
 Copyright © 2016 wihoho <wihoho@gmail.com>
