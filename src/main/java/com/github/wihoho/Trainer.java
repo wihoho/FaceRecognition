@@ -32,6 +32,10 @@ public class Trainer {
         trainingLabels.add(label);
     }
 
+    public void addFaceAfterTraining(Matrix matrix, String label) {
+        featureExtraction.addFace(matrix, label);
+    }
+
     public void train() throws Exception {
         Preconditions.checkNotNull(metric);
         Preconditions.checkNotNull(featureType);

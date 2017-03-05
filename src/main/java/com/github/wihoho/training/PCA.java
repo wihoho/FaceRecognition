@@ -139,7 +139,13 @@ public class PCA extends FeatureExtraction {
 		// TODO Auto-generated method stub
 		return meanMatrix;
 	}
-	
+
+	@Override
+	public int addFace(Matrix face, String label) {
+		// to be done
+		return 0;
+	}
+
 	public ArrayList<Matrix> getTrainingSet(){
 		return this.trainingSet;
 	}

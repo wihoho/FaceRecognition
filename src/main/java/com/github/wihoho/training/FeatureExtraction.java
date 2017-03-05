@@ -19,4 +19,6 @@ public abstract class FeatureExtraction {
 	public abstract ArrayList<ProjectedTrainingMatrix> getProjectedTrainingSet();
 
 	public abstract Matrix getMeanMatrix();
+
+	public abstract int addFace(Matrix face, String label);
 }

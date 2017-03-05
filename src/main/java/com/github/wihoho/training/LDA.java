@@ -154,4 +154,10 @@ public class LDA extends FeatureExtraction {
         // TODO Auto-generated method stub
         return meanMatrix;
     }
+
+    @Override
+    public int addFace(Matrix face, String label) {
+        // to be done
+        return 0;
+    }
 }
