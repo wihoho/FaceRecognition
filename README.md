@@ -49,6 +49,10 @@ After that, you may refer to <code>com.github.wihoho.TrainerTest</code> as below
     assertEquals("john", trainer.recognize(convertToMatrix(john4)));
     assertEquals("smith", trainer.recognize(convertToMatrix(smith4)));
 
+## Contact
+I am open to collaboration in any forms. Kindly contact me with below email.
+* wihoho@gmail.com
+
 ## Acknowledgement
 [1] Delac, K., Grgic, M., & Grgic, S. (2005). Independent comparative study of PCA, ICA, and LDA on the FERET data set. International Journal of Imaging Systems and Technology, 15(5), 252-260.  
 [2] Turk, M., & Pentland, A. (1991). Eigenfaces for recognition. Journal of cognitive neuroscience, 3(1), 71-86.  
