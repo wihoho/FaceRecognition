@@ -6,9 +6,9 @@ The below figure shows respective feature space:
 ![](https://lh5.googleusercontent.com/-KtrqHFBv7l8/UV1tYE4zvtI/AAAAAAAAA24/Bf8x6b3UER8/s730/Eigenfaces.jpg)
 
 ## Design
-Because of the limitation of Markdown, I provide [the pdf document](https://github.com/wihoho/FaceRecognition/blob/master/doc/FaceRecognition.pdf) for your reference.
+Because of the limitation of Markdown, I provide [the pdf document](https://github.com/wihoho/FaceRecognition/blob/master/doc/FaceRecognitionReport.pdf) for your reference.
 
-Presentation: [https://github.com/wihoho/FaceRecognition/blob/master/doc/Face%20Recognition%20Demo.pdf]()
+Presentation: [Slides](https://github.com/wihoho/FaceRecognition/blob/master/doc/FaceRecognitionSlides.pdf)
 
 
 ## Usage
