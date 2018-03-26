@@ -10,6 +10,10 @@ Because of the limitation of Markdown, I provide [the pdf document](https://gith
 
 Presentation: [Slides](https://github.com/wihoho/FaceRecognition/blob/master/doc/FaceRecognitionSlides.pdf)
 
+## Setup
+This is a maven project and uses lombok to generate certain Java classes like builder.
+
+You may refer to https://stackoverflow.com/questions/41161076/adding-lombok-plugin-to-intellij-project on how to set up lombok in intelliJ or google for solutions to setup lombok in eclipse.
 
 ## Usage
 As many people asked me about this project, I decided to revamp this project into a maven project and release maven dependency to make this project easier to be used by
